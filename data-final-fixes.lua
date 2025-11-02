@@ -22,8 +22,8 @@ function This_MOD.start()
     --- Valores de la referencia
     This_MOD.reference_values()
 
-    -- --- Obtener los elementos
-    -- This_MOD.get_elements()
+    --- Obtener los elementos
+    This_MOD.get_elements()
 
     -- --- Modificar los elementos
     -- for _, spaces in pairs(This_MOD.to_be_processed) do
@@ -77,6 +77,89 @@ function This_MOD.reference_values()
     --- Valores a evitar
     This_MOD.ignore_types = { ["armor"] = true }
     This_MOD.ignore_items = { ["pistol"] = true }
+
+    --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+end
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+---[ Cambios del MOD ]---
+---------------------------------------------------------------------------------------------------
+
+function This_MOD.get_elements()
+    --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    --- Función para analizar cada entidad
+    --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+
+    local function validate_item(item)
+        --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+        --- Validación
+        --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+
+        if GMOD.get_key(item.flags, "not-stackable") then return end
+        if GMOD.get_key(item.flags, "spawnable") then return end
+
+        if This_MOD.ignore_types[item.type] then return end
+        if This_MOD.ignore_items[item.name] then return end
+
+        --- Calcular la cantidad
+        local Amount = This_MOD.setting.amount
+        if This_MOD.setting.stack_size then
+            Amount = Amount * item.stack_size
+            if Amount > 65000 then
+                Amount = 65000
+            end
+        end
+
+        if item.stack_size >= Amount then return end
+
+        --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+
+
+
+
+
+        --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+        --- Valores para el proceso
+        --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+
+        local Space = {}
+        Space.item = item
+
+        --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+
+
+
+
+
+        --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+        --- Guardar la información
+        --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+
+        This_MOD.to_be_processed[item.type] = This_MOD.to_be_processed[item.type] or {}
+        This_MOD.to_be_processed[item.type][item.name] = Space
+
+        --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    end
+
+    --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+
+
+
+
+
+    --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    --- Valores a afectar
+    --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+
+    for _, item in pairs(GMOD.items) do
+        validate_item(item)
+    end
 
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 end
