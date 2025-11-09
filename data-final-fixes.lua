@@ -79,7 +79,7 @@ function This_MOD.reference_values()
 
     --- Valores a evitar
     This_MOD.ignore_types = { ["armor"] = true }
-    This_MOD.ignore_items = { ["pistol"] = true }
+    This_MOD.ignore_items = { ["pistol"] = true, ["rocket-fuel"] = true }
 
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 end
@@ -194,8 +194,8 @@ function This_MOD.update_compacts()
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
     local d12b = GMOD.d12b
-    if not d12b then return end
     local d13b = GMOD.d13b
+    if not d12b then return end
 
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
