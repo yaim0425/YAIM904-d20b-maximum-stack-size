@@ -1,19 +1,21 @@
 # YAIM904 d20b – Maximum Stack Size 📦⬆️
 
+---
+
 ## 📦 Description
 
 **YAIM904 d20b – Maximum Stack Size** increases the **maximum stack size of items**, applying the change only when it is beneficial for the object.
 
-This MOD is designed to reduce inventory clutter, improve logistics efficiency, and simplify storage and transport by allowing items to stack in larger quantities.
+This MOD is designed to reduce inventory clutter, improve logistics efficiency and simplify storage and transport by allowing items to stack in larger quantities.
 
-It is especially useful for large factories, logistics-heavy playthroughs, and megabases.
+It is especially useful for large factories, logistics-heavy playthroughs and megabases.
 
 ---
 
 ## ⚙️ How it works (Player view)
 
 * Item stack sizes are **increased when beneficial**
-* Inventory, chests, trains, and logistics benefit automatically
+* Inventory, chests, trains and logistics benefit automatically
 * No configuration or player interaction is required
 * Changes are applied globally when the MOD is enabled
 
@@ -45,7 +47,7 @@ The core gameplay remains unchanged; only stack limits are adjusted.
 
 ## ❤️ Support
 
-Suggestions, ideas, and balance feedback are welcome on the GitHub repository.
+Suggestions, ideas and balance feedback are welcome on the GitHub repository.
 
 ---
 
