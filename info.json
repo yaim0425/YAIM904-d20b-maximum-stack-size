@@ -1,12 +1,12 @@
-{
-  "name": "YAIM904-d20b-maximum-stack-size",
-  "version": "0.0.2",
-  "title": "YAIM904 d20b Maximum stack size",
-  "author": "YAIM904",
-  "factorio_version": "2.0",
-  "description": "Set the maximum number of objects that can be applied, if the change benefits the object. [[I accept suggestions]]",
-  "homepage": "https://github.com/yaim0425/YAIM904-d20b-maximum-stack-size",
-  "dependencies": [
-    "YAIM904-d00b-core"
-  ]
+﻿{
+    "name":  "YAIM904-d20b-maximum-stack-size",
+    "version":  "0.0.2",
+    "title":  "YAIM904 d20b Maximum stack size",
+    "author":  "YAIM904",
+    "factorio_version":  "2.1",
+    "description":  "Set the maximum number of objects that can be applied, if the change benefits the object. [[I accept suggestions]]",
+    "homepage":  "https://github.com/yaim0425/YAIM904-d20b-maximum-stack-size",
+    "dependencies":  [
+        "YAIM904-d00b-core"
+    ]
 }
