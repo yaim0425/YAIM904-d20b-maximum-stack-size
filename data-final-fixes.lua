@@ -28,12 +28,12 @@ function This_MOD.start()
     --- Modificar los elementos
     for _, spaces in pairs(This_MOD.to_be_processed) do
         for _, space in pairs(spaces) do
-            --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+            --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
             --- Actualizar los objetos
             This_MOD.update_item(space)
 
-            --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+            --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
         end
     end
 
@@ -161,7 +161,7 @@ function This_MOD.get_elements()
     --- Valores a afectar
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
-    for _, item in pairs(GMOD.items) do
+    for _, item in pairs(GMOD.item) do
         validate_item(item)
     end
 
@@ -233,8 +233,8 @@ function This_MOD.update_compacts()
 
         local Space = {}
 
-        Space.item_do = GMOD.items[recipe.results[1].name]
-        Space.item_undo = GMOD.items[recipe.ingredients[1].name]
+        Space.item_do = GMOD.item[recipe.results[1].name]
+        Space.item_undo = GMOD.item[recipe.ingredients[1].name]
 
         Space.recipe_do = recipe
         Space.recipe_undo = recipe.name:gsub(
@@ -257,7 +257,7 @@ function This_MOD.update_compacts()
         --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
         if Space.item_do.place_result then
-            Space.entity = GMOD.entities[Space.item_do.place_result]
+            Space.entity = GMOD.entity[Space.item_do.place_result]
         end
 
         if Space.item_do.place_as_tile then
@@ -267,7 +267,7 @@ function This_MOD.update_compacts()
         end
 
         if Space.item_do.place_as_equipment_result then
-            Space.equipment = GMOD.equipments[Space.item_do.place_as_equipment_result]
+            Space.equipment = GMOD.equipment[Space.item_do.place_as_equipment_result]
         end
 
         --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
@@ -339,7 +339,7 @@ function This_MOD.update_compacts()
         --- Eliminar los prototipos de GMOD
         --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
-        GMOD.items[space.item_do.name] = nil
+        GMOD.item[space.item_do.name] = nil
         GMOD.recipes[space.item_do.name] = nil
         table.remove(
             GMOD.recipes[space.item_undo.name],
@@ -350,11 +350,11 @@ function This_MOD.update_compacts()
         )
 
         if space.equipment then
-            GMOD.equipments[space.item_do.name] = nil
+            GMOD.equipment[space.item_do.name] = nil
         end
 
         if space.entity then
-            GMOD.entities[space.item_do.name] = nil
+            GMOD.entity[space.item_do.name] = nil
         end
 
         if space.tiles then
